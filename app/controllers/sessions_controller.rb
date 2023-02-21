@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
             #if params["password"] == @user["password"]
             if BCrypt::Password.new(@user["password"]) == params["password"]
                 cookies["monster"] = "me like cookies"
+                flash["notice"] = "Welcome"
+                session["id"] = @user["id"]
                 redirect_to "/companies"
             else 
                 redirect_to "/sessions/new"

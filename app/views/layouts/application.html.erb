@@ -12,13 +12,13 @@
   <body>
     <p>
     <!-- if logged in, display name -->
-    Hey, 
+    <% if @current_user %>
+      <h3>Hey, <%= @current_user["first_name"] %> </h3>
     <!-- ELSE -->
-      <a href="/sessions/new">Login</a>
-      |
-      <a href="/users/new">Sign Up</a>
+    <% else %>
+      <a href="/sessions/new">Login</a>|<a href="/users/new">Sign Up</a>
+    <% end %>
     </p>
-
     <p>
       <%= flash["notice"] %>
     </p>
